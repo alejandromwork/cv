@@ -3,6 +3,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<base href="/cv/">
+<script>
+// Auto-detect base path for local vs GitHub Pages
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+  document.querySelector('base').setAttribute('href', '/');
+}
+</script>
 <title>Alejandro Moral Aranda </title>
 <!-- ...existing code... -->
 <meta content="width=1200, initial-scale=0.4, maximum-scale=1.0, user-scalable=yes" name="viewport"/>

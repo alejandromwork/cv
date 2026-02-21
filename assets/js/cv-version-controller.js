@@ -84,16 +84,20 @@ class CVVersionController {
   }
 
   async loadVersions() {
+    // Detect base path (handles GitHub Pages /cv/ path)
+    const basePath = window.location.pathname.includes('/cv/') ? '/cv/' : '/';
+    const dataPath = basePath === '/' ? 'assets/data/cv-data.json' : '/cv/assets/data/cv-data.json';
+    
     try {
-      const response = await fetch('assets/data/cv-data.json');
+      const response = await fetch(dataPath);
       if (response.ok) {
         const localData = await response.json();
         this.cvData = localData;
-        console.log('Loaded CV data from local JSON');
+        console.log('Loaded CV data from:', dataPath);
         this.populatePageWithData(localData);
         this.applyVersion(this.currentVersion);
       } else {
-        console.error('Failed to load CV data');
+        console.error('Failed to load CV data from:', dataPath);
       }
     } catch (error) {
       console.error('Error loading CV data:', error);
