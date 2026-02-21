@@ -319,7 +319,7 @@ class CVVersionController {
     }
 
     // Update document title
-    const title = this.cvData.personalInfo?.name || 'Alejandro Moral Aranda';
+    const title = this.cvData.personalInfo?.name || 'Alejandro Moral ';
     document.title = `${title} - CV`;
 
     // Data is already populated, just update title
@@ -432,7 +432,7 @@ class CVVersionController {
   updatePDFLink(versionKey) {
     const downloadBtn = document.querySelector('.download-btn');
     if (downloadBtn) {
-      const fileName = `alejandro_moral_aranda_${versionKey.replace(/-/g, '_')}.pdf`;
+      const fileName = `alejandro_moral__${versionKey.replace(/-/g, '_')}.pdf`;
       downloadBtn.setAttribute('href', fileName);
       downloadBtn.setAttribute('download', fileName);
     }
@@ -441,7 +441,7 @@ class CVVersionController {
   // Generate PDF for current version
   async generatePDF() {
     const versionKey = this.currentVersion;
-    const fileName = `alejandro_moral_aranda_${versionKey.replace(/-/g, '_')}.pdf`;
+    const fileName = `alejandro_moral__${versionKey.replace(/-/g, '_')}.pdf`;
     
     // Trigger PDF generation (assuming pdf-generator.js is loaded)
     if (window.generatePDF) {
