@@ -229,7 +229,7 @@
                 <p style="color: #666; margin-bottom: 15px; font-size: 14px;">
                     Live preview of your CV
                 </p>
-                <iframe class="preview-frame" id="cvPreview" src="../developer/index.html"></iframe>
+                <iframe class="preview-frame" id="cvPreview" src="../index.html"></iframe>
                 <div class="actions">
                     <button class="btn-secondary" onclick="refreshPreview()">🔄 Refresh Preview</button>
                 </div>
@@ -392,7 +392,7 @@
         }
 
         function refreshPreview() {
-            document.getElementById('cvPreview').src = '../developer/index.html?' + Date.now();
+            document.getElementById('cvPreview').src = '../index.html?' + Date.now();
         }
 
         // Image Upload Functionality

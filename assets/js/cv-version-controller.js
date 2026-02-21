@@ -85,7 +85,7 @@ class CVVersionController {
 
   async loadVersions() {
     try {
-      const response = await fetch('../assets/data/cv-data.json');
+      const response = await fetch('assets/data/cv-data.json');
       if (response.ok) {
         const localData = await response.json();
         this.cvData = localData;
