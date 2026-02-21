@@ -307,21 +307,6 @@ class CVVersionController {
     // Version switching disabled - single version CV
     console.log('Version switching not available in single-version mode');
   }
-    window.history.pushState({}, '', url);
-
-    // Update selector
-    const selector = document.getElementById('version-selector');
-    if (selector) {
-      selector.value = displayVersion;
-    }
-
-    // Auto-refresh PDF preview if function exists
-    if (typeof window.generatePDF === 'function') {
-      setTimeout(() => {
-        window.generatePDF();
-      }, 300); // slight delay to ensure DOM is updated
-    }
-  }
 
   applyVersion(versionKey) {
     if (!this.cvData) {

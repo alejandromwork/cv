@@ -41,9 +41,15 @@
 </head>
 <body>
   <!-- Preloader overlay -->
-  <div id="preloader-overlay">
+  <div id="preloader-overlay" class="hidden">
     <div class="preloader-spinner"></div>
   </div>
+  <script>
+    // Show preloader only if not in iframe
+    if (window.self === window.top) {
+      document.getElementById('preloader-overlay').classList.remove('hidden');
+    }
+  </script>
 <nav class="navbar">
 <ul class="nav-list">
 <li class="nav-item" id="nav-cv"><a href="#cv">CV</a></li>
