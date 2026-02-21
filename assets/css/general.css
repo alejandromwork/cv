@@ -136,7 +136,7 @@ html, body {
   background: #2c3e50;
   color: white;
   padding: 40px 50px 30px;
-  margin: 0;
+  margin-bottom: 25px;
   border-bottom: 4px solid #34495e;
   width: 100%;
   box-sizing: border-box;
@@ -321,7 +321,7 @@ html, body {
 }
 
 .resume .func .edu {
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .resume .func h3 {
