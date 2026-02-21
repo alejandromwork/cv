@@ -272,7 +272,7 @@ class CVVersionController {
           const div = document.createElement('div');
           div.className = 'language';
           div.innerHTML = `
-            <img src="../assets/images/${lang.flag}" alt="${lang.name}" class="flag">
+            <img src="assets/images/${lang.flag}" alt="${lang.name}" class="flag">
             <span>${lang.name}</span>
           `;
           langContainer.appendChild(div);
