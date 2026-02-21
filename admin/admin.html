@@ -3,26 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Admin Panel - Edit Content</title>
+    <title>CV Admin Panel</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
+        .container { max-width: 1400px; margin: 0 auto; }
         .login-panel {
             background: white;
             border-radius: 10px;
@@ -31,7 +21,6 @@
             margin: 100px auto;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
-
         .admin-panel {
             background: white;
             border-radius: 10px;
@@ -39,198 +28,157 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             display: none;
         }
-
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            text-align: center;
+        h1 { color: #333; margin-bottom: 20px; text-align: center; }
+        h2 { 
+            color: #667eea; 
+            margin: 20px 0 15px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 2px solid #667eea; 
+            font-size: 18px;
         }
-
-        h2 {
-            color: #667eea;
-            margin: 30px 0 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            color: #555;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        input[type="password"],
-        input[type="text"],
-        select,
-        textarea {
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; color: #333; font-weight: 500; }
+        input, textarea, select {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
+            padding: 10px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 14px;
-            transition: border-color 0.3s;
+            font-family: inherit;
         }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-            font-family: monospace;
-        }
-
+        textarea { resize: vertical; font-family: 'Courier New', monospace; }
         button {
             background: #667eea;
             color: white;
-            border: none;
             padding: 12px 30px;
+            border: none;
             border-radius: 5px;
+            cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            cursor: pointer;
             transition: background 0.3s;
         }
-
-        button:hover {
-            background: #5568d3;
-        }
-
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            margin-left: 10px;
-        }
-
-        .btn-secondary:hover {
-            background: #5a6268;
-        }
-
-        .btn-danger {
-            background: #dc3545;
-        }
-
-        .btn-danger:hover {
-            background: #c82333;
-        }
-
+        button:hover { background: #5568d3; }
+        .btn-secondary { background: #6c757d; margin-left: 10px; }
+        .btn-secondary:hover { background: #5a6268; }
+        .btn-success { background: #28a745; }
+        .btn-success:hover { background: #218838; }
         .status {
-            padding: 15px;
+            padding: 10px;
+            margin: 10px 0;
             border-radius: 5px;
-            margin: 20px 0;
             display: none;
         }
-
-        .status.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .status.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #dc3545;
+            padding: 8px 20px;
+            font-size: 14px;
         }
-
-        .status.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        .logout-btn:hover { background: #c82333; }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
         }
-
-        .status.info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
+        
+        .panel-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
         }
-
-        .header {
+        
+        #jsonEditor {
+            height: 500px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .preview-frame {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+        }
+        
+        .image-upload-area {
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 15px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .image-upload-area:hover {
+            background: #f8f9fa;
+            border-color: #5568d3;
+        }
+        
+        .image-upload-area.dragover {
+            background: #e7f3ff;
+            border-color: #667eea;
+        }
+        
+        #fileInput {
+            display: none;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .image-list {
+            margin-top: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .image-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            border-bottom: 3px solid transparent;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .tab.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .editor-section {
+            padding: 8px;
+            margin: 5px 0;
             background: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            border-radius: 4px;
         }
-
-        .json-editor {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 15px;
-            border-radius: 5px;
+        
+        .image-name {
             font-family: 'Courier New', monospace;
             font-size: 13px;
-            min-height: 400px;
+            color: #333;
         }
-
-        .action-buttons {
+        
+        .copy-btn {
+            background: #17a2b8;
+            padding: 5px 15px;
+            font-size: 12px;
+        }
+        
+        .copy-btn:hover {
+            background: #138496;
+        }
+        
+        .actions {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
     </style>
 </head>
@@ -239,521 +187,356 @@
     <div class="login-panel" id="loginPanel">
         <h1>🔐 CV Admin Login</h1>
         <div class="form-group">
-            <label for="password">Admin Password</label>
-            <input type="password" id="password" placeholder="Enter your password">
+            <label for="username">GitHub Username</label>
+            <input type="text" id="username" placeholder="alejandromwork" value="alejandromwork">
         </div>
-        <button onclick="login()">Login</button>
-        <div class="status" id="loginStatus"></div>
+        <div class="form-group">
+            <label for="token">GitHub Personal Access Token</label>
+            <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxx">
+        </div>
+        <div class="form-group">
+            <label for="repo">Repository (owner/repo)</label>
+            <input type="text" id="repo" placeholder="alejandromwork/cv" value="alejandromwork/cv">
+        </div>
+        <button onclick="login()">Login & Load CV Data</button>
+        <div id="loginStatus" class="status"></div>
     </div>
 
     <!-- Admin Panel -->
-    <div class="container">
-        <div class="admin-panel" id="adminPanel">
-            <div class="header">
-                <h1>📝 CV Content Editor</h1>
-                <button class="btn-secondary" onclick="logout()">Logout</button>
+    <div class="admin-panel" id="adminPanel">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+        <h1>📝 CV Content Editor</h1>
+        
+        <div class="content-grid">
+            <!-- JSON Editor Section -->
+            <div class="panel-section">
+                <h2>📄 JSON Editor</h2>
+                <p style="color: #666; margin-bottom: 15px; font-size: 14px;">
+                    Edit your CV data directly in JSON format
+                </p>
+                <textarea id="jsonEditor" placeholder="Loading CV data..."></textarea>
+                <div class="actions">
+                    <button onclick="validateJSON()">Validate JSON</button>
+                    <button class="btn-success" onclick="saveJSON()">💾 Save to GitHub</button>
+                    <button class="btn-secondary" onclick="loadCVData()">🔄 Reload</button>
+                </div>
+                <div id="jsonStatus" class="status"></div>
             </div>
-
-            <div class="status" id="status"></div>
-
-            <div class="form-group">
-                <label for="versionSelect">Select CV Version</label>
-                <select id="versionSelect" onchange="loadVersion()">
-                    <option value="neutral_finance">Finance Professional</option>
-                    <option value="fund_accounting">Fund Accounting</option>
-                    <option value="reporting_analyst">Finance and Programming</option>
-                    <option value="investment_analysis">Investment Analysis</option>
-                    <option value="fintech">FinTech Developer</option>
-                    <option value="data_science">Data Science</option>
-                    <option value="pure_coding">Software Developer</option>
-                </select>
-            </div>
-
-            <div class="tabs">
-                <button class="tab active" onclick="switchTab('json')">JSON Editor</button>
-                <button class="tab" onclick="switchTab('visual')">Visual Editor</button>
-                <button class="tab" onclick="switchTab('preview')">Preview</button>
-            </div>
-
-            <!-- JSON Editor Tab -->
-            <div class="tab-content active" id="jsonTab">
-                <div class="editor-section">
-                    <h2>Edit CV Data (JSON)</h2>
-                    <textarea class="json-editor" id="jsonEditor" spellcheck="false"></textarea>
-                    <div class="action-buttons">
-                        <button onclick="saveData()">💾 Save Changes</button>
-                        <button class="btn-secondary" onclick="loadVersion()">🔄 Reload</button>
-                        <button class="btn-danger" onclick="validateJSON()">✓ Validate JSON</button>
-                    </div>
+            
+            <!-- CV Preview Section -->
+            <div class="panel-section">
+                <h2>👁️ CV Preview</h2>
+                <p style="color: #666; margin-bottom: 15px; font-size: 14px;">
+                    Live preview of your CV
+                </p>
+                <iframe class="preview-frame" id="cvPreview" src="../developer/index.html"></iframe>
+                <div class="actions">
+                    <button class="btn-secondary" onclick="refreshPreview()">🔄 Refresh Preview</button>
                 </div>
             </div>
-
-            <!-- Visual Editor Tab -->
-            <div class="tab-content" id="visualTab">
-                <div class="editor-section">
-                    <h2>Personal Information</h2>
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="edit-name">
-                    </div>
-                    <div class="form-group">
-                        <label>Job Title</label>
-                        <input type="text" id="edit-jobTitle">
-                    </div>
-                    <div class="form-group">
-                        <label>About Me</label>
-                        <textarea id="edit-about"></textarea>
-                    </div>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Contact Information</h2>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" id="edit-email">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" id="edit-phone">
-                    </div>
-                    <div class="form-group">
-                        <label>Location</label>
-                        <input type="text" id="edit-location">
-                    </div>
-                    <div class="form-group">
-                        <label>Website</label>
-                        <input type="text" id="edit-website">
-                    </div>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Follow Me</h2>
-                    <div class="form-group">
-                        <label>GitHub</label>
-                        <input type="text" id="edit-github">
-                    </div>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Education</h2>
-                    <div id="edit-education-list"></div>
-                    <button type="button" onclick="addEducation()">➕ Add Education</button>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Work Experience</h2>
-                    <div id="edit-work-list"></div>
-                    <button type="button" onclick="addWork()">➕ Add Work Experience</button>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Skills</h2>
-                    <div id="edit-skills-list"></div>
-                    <button type="button" onclick="addSkill()">➕ Add Skill</button>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Projects</h2>
-                    <div id="edit-projects-list"></div>
-                    <button type="button" onclick="addProject()">➕ Add Project</button>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Interests</h2>
-                    <div id="edit-interests-list"></div>
-                    <button type="button" onclick="addInterest()">➕ Add Interest</button>
-                </div>
-
-                <div class="editor-section">
-                    <h2>Languages</h2>
-                    <div id="edit-languages-list"></div>
-                    <button type="button" onclick="addLanguage()">➕ Add Language</button>
-                </div>
-
-                <div class="action-buttons">
-                    <button onclick="saveVisualData()">💾 Save Visual Changes</button>
-                    <button class="btn-secondary" onclick="loadVisualEditor()">🔄 Reload</button>
-                </div>
+        </div>
+        
+        <!-- Image Upload Section -->
+        <div class="panel-section" style="margin-top: 20px;">
+            <h2>🖼️ Image Manager</h2>
+            <p style="color: #666; margin-bottom: 15px; font-size: 14px;">
+                Upload images to assets/images folder (drag & drop or click to browse)
+            </p>
+            
+            <div class="image-upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <p style="color: #333; font-weight: 500;">Click or drag images here to upload</p>
+                <p style="color: #999; font-size: 13px; margin-top: 5px;">Supports: JPG, PNG, GIF, SVG, WEBP</p>
             </div>
-
-            <!-- Preview Tab -->
-            <div class="tab-content" id="previewTab">
-                <div class="loading" id="previewLoading">
-                    <div class="spinner"></div>
-                    <p>Loading preview...</p>
-                </div>
-                <iframe id="previewFrame" style="width: 100%; height: 800px; border: 1px solid #ddd; border-radius: 5px; display: none;"></iframe>
-            </div>
-
-            <div class="form-group" style="margin-top: 20px;">
-                <button onclick="downloadCurrentJson()">⬇️ Download JSON from Firebase</button>
+            <input type="file" id="fileInput" accept="image/*" multiple onchange="handleFileSelect(event)">
+            
+            <div id="uploadStatus" class="status"></div>
+            
+            <h2 style="margin-top: 25px;">Current Images</h2>
+            <div class="image-list" id="imageList">
+                <p style="color: #999; text-align: center;">Loading images...</p>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    
-    <!-- Firebase Config -->
-    <script src="firebase-config.js"></script>
     <script>
-        let currentVersion = 'neutral_finance';
-        let currentData = null;
+        let credentials = {
+            username: '',
+            token: '',
+            repo: ''
+        };
 
-        // Initialize Firebase on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            initializeFirebase();
-            // Skip login and go directly to admin panel
+        // Check for saved session
+        window.onload = function() {
+            const savedCreds = sessionStorage.getItem('githubCreds');
+            if (savedCreds) {
+                credentials = JSON.parse(savedCreds);
+                document.getElementById('loginPanel').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadCVData();
+                loadImageList();
+            }
+        };
+
+        function login() {
+            credentials.username = document.getElementById('username').value.trim();
+            credentials.token = document.getElementById('token').value.trim();
+            credentials.repo = document.getElementById('repo').value.trim();
+
+            if (!credentials.username || !credentials.token || !credentials.repo) {
+                showStatus('loginStatus', 'Please fill in all fields', 'error');
+                return;
+            }
+
+            sessionStorage.setItem('githubCreds', JSON.stringify(credentials));
             document.getElementById('loginPanel').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
-            loadVersion();
-        });
+            loadCVData();
+            loadImageList();
+        }
 
-        // Logout function
         function logout() {
+            sessionStorage.removeItem('githubCreds');
             document.getElementById('adminPanel').style.display = 'none';
             document.getElementById('loginPanel').style.display = 'block';
+            document.getElementById('jsonEditor').value = '';
+            document.getElementById('token').value = '';
         }
 
-        // Load CV version data
-        async function loadVersion() {
-            currentVersion = document.getElementById('versionSelect').value;
-            
+        function showStatus(elementId, message, type) {
+            const status = document.getElementById(elementId);
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+            setTimeout(() => status.style.display = 'none', 5000);
+        }
+
+        async function loadCVData() {
             try {
-                showStatus('status', 'Loading CV data...', 'info');
-                const data = await CVDatabase.loadCVData(currentVersion);
+                const url = `https://api.github.com/repos/${credentials.repo}/contents/assets/data/cv-data.json`;
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${credentials.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) throw new Error('Failed to load CV data');
+
+                const data = await response.json();
+                const content = atob(data.content);
+                const jsonData = JSON.parse(content);
                 
-                if (data) {
-                    currentData = data;
-                    document.getElementById('jsonEditor').value = JSON.stringify(data, null, 2);
-                    loadVisualEditor();
-                    showStatus('status', 'CV data loaded successfully', 'success');
-                } else {
-                    showStatus('status', 'Error: Could not load CV data from Firebase', 'error');
-                }
+                document.getElementById('jsonEditor').value = JSON.stringify(jsonData, null, 2);
+                showStatus('jsonStatus', 'CV data loaded successfully', 'success');
             } catch (error) {
-                showStatus('status', 'Error loading data: ' + error.message, 'error');
+                showStatus('jsonStatus', 'Error loading CV data: ' + error.message, 'error');
+                console.error(error);
             }
         }
 
-        // Save CV data
-        async function saveData() {
-            try {
-                const jsonText = document.getElementById('jsonEditor').value;
-                const data = JSON.parse(jsonText);
-                
-                showStatus('status', 'Saving changes...', 'info');
-                await CVDatabase.saveCVData(currentVersion, data);
-                
-                currentData = data;
-                showStatus('status', 'Changes saved successfully!', 'success');
-            } catch (error) {
-                if (error instanceof SyntaxError) {
-                    showStatus('status', 'Invalid JSON format: ' + error.message, 'error');
-                } else {
-                    showStatus('status', 'Error saving data: ' + error.message, 'error');
-                }
-            }
-        }
-
-        // Validate JSON
         function validateJSON() {
             try {
-                const jsonText = document.getElementById('jsonEditor').value;
-                JSON.parse(jsonText);
-                showStatus('status', '✓ JSON is valid', 'success');
+                const content = document.getElementById('jsonEditor').value;
+                JSON.parse(content);
+                showStatus('jsonStatus', '✓ JSON is valid', 'success');
+                return true;
             } catch (error) {
-                showStatus('status', '✗ Invalid JSON: ' + error.message, 'error');
+                showStatus('jsonStatus', '✗ Invalid JSON: ' + error.message, 'error');
+                return false;
             }
         }
 
-        // Load visual editor
-        function loadVisualEditor() {
-            if (!currentData) return;
-            // Personal
-            const personal = currentData.personal || currentData;
-            const contact = currentData.contact || {};
-            document.getElementById('edit-name').value = personal.name || '';
-            document.getElementById('edit-jobTitle').value = personal.jobTitle || currentData.jobTitle || '';
-            document.getElementById('edit-about').value = personal.about || currentData.about || '';
-            document.getElementById('edit-email').value = contact.email || currentData.email || '';
-            document.getElementById('edit-phone').value = contact.phone || currentData.phone || '';
-            document.getElementById('edit-location').value = contact.location || currentData.location || '';
-            document.getElementById('edit-website').value = contact.website || currentData.website || '';
-            document.getElementById('edit-github').value = (contact.github || currentData.github || currentData.personal?.github || '');
+        async function saveJSON() {
+            if (!validateJSON()) return;
 
-            // Education
-            const eduList = document.getElementById('edit-education-list');
-            eduList.innerHTML = '';
-            (currentData.education || []).forEach((edu, i) => {
-                const div = document.createElement('div');
-                div.className = 'form-group';
-                div.innerHTML = `
-                    <label>Degree</label><input type="text" value="${edu.degree || ''}" onchange="currentData.education[${i}].degree=this.value">
-                    <label>School</label><input type="text" value="${edu.school || ''}" onchange="currentData.education[${i}].school=this.value">
-                    <label>Dates</label><input type="text" value="${edu.dates || ''}" onchange="currentData.education[${i}].dates=this.value">
-                    <label>Description</label><input type="text" value="${edu.description || ''}" onchange="currentData.education[${i}].description=this.value">
-                    <label>Coursework (comma separated)</label><input type="text" value="${(edu.coursework||[]).join(', ')}" onchange="currentData.education[${i}].coursework=this.value.split(',').map(x=>x.trim())">
-                    <button type='button' class='btn-danger' onclick='removeEducation(${i})'>Remove</button>
-                `;
-                eduList.appendChild(div);
-            });
-
-            // Work Experience
-            const workList = document.getElementById('edit-work-list');
-            workList.innerHTML = '';
-            (currentData.workExperience || []).forEach((work, i) => {
-                const div = document.createElement('div');
-                div.className = 'form-group';
-                div.innerHTML = `
-                    <label>Title</label><input type="text" value="${work.title || ''}" onchange="currentData.workExperience[${i}].title=this.value">
-                    <label>Company</label><input type="text" value="${work.company || ''}" onchange="currentData.workExperience[${i}].company=this.value">
-                    <label>Dates</label><input type="text" value="${work.dates || ''}" onchange="currentData.workExperience[${i}].dates=this.value">
-                    <label>Description</label><input type="text" value="${work.description || ''}" onchange="currentData.workExperience[${i}].description=this.value">
-                    <button type='button' class='btn-danger' onclick='removeWork(${i})'>Remove</button>
-                `;
-                workList.appendChild(div);
-            });
-
-            // Skills
-            const skillsList = document.getElementById('edit-skills-list');
-            skillsList.innerHTML = '';
-            (currentData.skills || []).forEach((skill, i) => {
-                const div = document.createElement('div');
-                div.className = 'form-group';
-                div.innerHTML = `
-                    <label>Name</label><input type="text" value="${skill.name || ''}" onchange="currentData.skills[${i}].name=this.value">
-                    <label>Percent</label><input type="number" value="${skill.percent || 0}" onchange="currentData.skills[${i}].percent=parseInt(this.value)">
-                    <label>Years</label><input type="number" value="${skill.years || 0}" onchange="currentData.skills[${i}].years=parseInt(this.value)">
-                    <label>Tags (comma separated)</label><input type="text" value="${(skill.tags||[]).join(', ')}" onchange="currentData.skills[${i}].tags=this.value.split(',').map(x=>x.trim())">
-                    <button type='button' class='btn-danger' onclick='removeSkill(${i})'>Remove</button>
-                `;
-                skillsList.appendChild(div);
-            });
-
-            // Projects
-            const projectsList = document.getElementById('edit-projects-list');
-            projectsList.innerHTML = '';
-            (currentData.projects || []).forEach((proj, i) => {
-                const div = document.createElement('div');
-                div.className = 'form-group';
-                div.innerHTML = `
-                    <label>Title</label><input type="text" value="${proj.title || ''}" onchange="currentData.projects[${i}].title=this.value">
-                    <label>Description</label><input type="text" value="${proj.description || ''}" onchange="currentData.projects[${i}].description=this.value">
-                    <label>Category</label><input type="text" value="${proj.category || ''}" onchange="currentData.projects[${i}].category=this.value">
-                    <label>Image</label><input type="text" value="${proj.image || ''}" onchange="currentData.projects[${i}].image=this.value">
-                    <label>Links (comma separated: text|url)</label><input type="text" value="${(proj.links||[]).map(l=>l.text+ '|' + l.url).join(', ')}" onchange="currentData.projects[${i}].links=this.value.split(',').map(x=>{let p=x.split('|');return {text:p[0]?.trim()||'',url:p[1]?.trim()||''}})">
-                    <label>Filter Category</label><input type="text" value="${proj.filterCategory || ''}" onchange="currentData.projects[${i}].filterCategory=this.value">
-                    <button type='button' class='btn-danger' onclick='removeProject(${i})'>Remove</button>
-                `;
-                projectsList.appendChild(div);
-            });
-
-            // Interests
-            const interestsList = document.getElementById('edit-interests-list');
-            interestsList.innerHTML = '';
-            (currentData.interests || []).forEach((intr, i) => {
-                const div = document.createElement('div');
-                div.className = 'form-group';
-                div.innerHTML = `
-                    <label>Name</label><input type="text" value="${intr.name || ''}" onchange="currentData.interests[${i}].name=this.value">
-                    <label>Icon</label><input type="text" value="${intr.icon || ''}" onchange="currentData.interests[${i}].icon=this.value">
-                    <button type='button' class='btn-danger' onclick='removeInterest(${i})'>Remove</button>
-                `;
-                interestsList.appendChild(div);
-            });
-
-            // Languages
-            const langList = document.getElementById('edit-languages-list');
-            langList.innerHTML = '';
-            (currentData.languages || []).forEach((lang, i) => {
-                const div = document.createElement('div');
-                div.className = 'form-group';
-                div.innerHTML = `
-                    <label>Name</label><input type="text" value="${lang.name || ''}" onchange="currentData.languages[${i}].name=this.value">
-                    <label>Flag (image file)</label><input type="text" value="${lang.flag || ''}" onchange="currentData.languages[${i}].flag=this.value">
-                    <button type='button' class='btn-danger' onclick='removeLanguage(${i})'>Remove</button>
-                `;
-                langList.appendChild(div);
-            });
-        }
-
-        // Add/remove functions for arrays
-        function addEducation() {
-            if (!currentData.education) currentData.education = [];
-            currentData.education.push({degree:'',school:'',dates:'',description:'',coursework:[]});
-            loadVisualEditor();
-        }
-        function removeEducation(i) {
-            currentData.education.splice(i,1);
-            loadVisualEditor();
-        }
-        function addWork() {
-            if (!currentData.workExperience) currentData.workExperience = [];
-            currentData.workExperience.push({title:'',company:'',dates:'',description:''});
-            loadVisualEditor();
-        }
-        function removeWork(i) {
-            currentData.workExperience.splice(i,1);
-            loadVisualEditor();
-        }
-        function addSkill() {
-            if (!currentData.skills) currentData.skills = [];
-            currentData.skills.push({name:'',percent:0,years:0,tags:[]});
-            loadVisualEditor();
-        }
-        function removeSkill(i) {
-            currentData.skills.splice(i,1);
-            loadVisualEditor();
-        }
-        function addProject() {
-            if (!currentData.projects) currentData.projects = [];
-            currentData.projects.push({title:'',description:'',category:'',image:'',links:[],filterCategory:''});
-            loadVisualEditor();
-        }
-        function removeProject(i) {
-            currentData.projects.splice(i,1);
-            loadVisualEditor();
-        }
-        function addInterest() {
-            if (!currentData.interests) currentData.interests = [];
-            currentData.interests.push({name:'',icon:''});
-            loadVisualEditor();
-        }
-        function removeInterest(i) {
-            currentData.interests.splice(i,1);
-            loadVisualEditor();
-        }
-        function addLanguage() {
-            if (!currentData.languages) currentData.languages = [];
-            currentData.languages.push({name:'',flag:''});
-            loadVisualEditor();
-        }
-        function removeLanguage(i) {
-            currentData.languages.splice(i,1);
-            loadVisualEditor();
-        }
-
-        // Save visual editor data
-        async function saveVisualData() {
             try {
-                const updatedData = {
-                    ...currentData,
-                    personal: {
-                        ...(currentData.personal || {}),
-                        name: document.getElementById('edit-name').value,
-                        jobTitle: document.getElementById('edit-jobTitle').value,
-                        about: document.getElementById('edit-about').value
-                    },
-                    contact: {
-                        ...(currentData.contact || {}),
-                        email: document.getElementById('edit-email').value,
-                        phone: document.getElementById('edit-phone').value,
-                        location: document.getElementById('edit-location').value,
-                        website: document.getElementById('edit-website').value,
-                        github: document.getElementById('edit-github').value
-                    }
-                };
-
-                showStatus('status', 'Saving changes...', 'info');
-                await CVDatabase.saveCVData(currentVersion, updatedData);
+                const content = document.getElementById('jsonEditor').value;
                 
-                currentData = updatedData;
-                document.getElementById('jsonEditor').value = JSON.stringify(updatedData, null, 2);
-                showStatus('status', 'Changes saved successfully!', 'success');
+                // Get current file SHA
+                const getUrl = `https://api.github.com/repos/${credentials.repo}/contents/assets/data/cv-data.json`;
+                const getResponse = await fetch(getUrl, {
+                    headers: {
+                        'Authorization': `token ${credentials.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!getResponse.ok) throw new Error('Failed to get file info');
+                const fileData = await getResponse.json();
+
+                // Update file
+                const updateUrl = `https://api.github.com/repos/${credentials.repo}/contents/assets/data/cv-data.json`;
+                const updateResponse = await fetch(updateUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${credentials.token}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Update CV data from admin panel',
+                        content: btoa(content),
+                        sha: fileData.sha
+                    })
+                });
+
+                if (!updateResponse.ok) throw new Error('Failed to save CV data');
+
+                showStatus('jsonStatus', '✓ CV data saved to GitHub successfully!', 'success');
+                refreshPreview();
             } catch (error) {
-                showStatus('status', 'Error saving data: ' + error.message, 'error');
+                showStatus('jsonStatus', '✗ Error saving: ' + error.message, 'error');
+                console.error(error);
             }
         }
 
-        // Switch tabs
-        function switchTab(tabName) {
-            // Update tab buttons
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Update tab content
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.getElementById(tabName + 'Tab').classList.add('active');
-            
-            // Load preview if preview tab is selected
-            if (tabName === 'preview') {
-                loadPreview();
-            }
+        function refreshPreview() {
+            document.getElementById('cvPreview').src = '../developer/index.html?' + Date.now();
         }
 
-        // Load preview
-        function loadPreview() {
-            const iframe = document.getElementById('previewFrame');
-            const loading = document.getElementById('previewLoading');
-            
-            loading.style.display = 'block';
-            iframe.style.display = 'none';
-            
-            // Map version to directory
-            const versionDirMap = {
-                'neutral_finance': 'finance',
-                'fund_accounting': 'fund-accounting',
-                'reporting_analyst': 'reporting-analyst',
-                'investment_analysis': 'investment',
-                'fintech': 'fintech',
-                'data_science': 'data-science',
-                'pure_coding': 'developer'
-            };
-            
-            const dir = versionDirMap[currentVersion];
-            iframe.src = `../${dir}/index.html`;
-            
-            iframe.onload = () => {
-                loading.style.display = 'none';
-                iframe.style.display = 'block';
-            };
-        }
+        // Image Upload Functionality
+        const uploadArea = document.getElementById('uploadArea');
 
-        // Show status message
-        function showStatus(elementId, message, type) {
-            const statusEl = document.getElementById(elementId);
-            statusEl.textContent = message;
-            statusEl.className = 'status ' + type;
-            statusEl.style.display = 'block';
-            
-            if (type === 'success') {
-                setTimeout(() => {
-                    statusEl.style.display = 'none';
-                }, 5000);
-            }
-        }
-
-        // Handle Enter key in login
-        document.getElementById('password')?.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                login();
-            }
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
         });
 
-        // Download current JSON from Firebase
-        async function downloadCurrentJson() {
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.add('dragover'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('dragover'), false);
+        });
+
+        uploadArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            handleFiles(files);
+        }
+
+        async function handleFiles(files) {
+            for (let file of files) {
+                if (!file.type.startsWith('image/')) {
+                    showStatus('uploadStatus', `${file.name} is not an image file`, 'error');
+                    continue;
+                }
+                await uploadImage(file);
+            }
+            loadImageList();
+        }
+
+        async function uploadImage(file) {
             try {
-                const data = await CVDatabase.loadCVData(currentVersion);
-                if (!data) {
-                    showStatus('status', 'No data found for this version.', 'error');
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    const content = e.target.result.split(',')[1]; // Get base64 content
+                    
+                    const url = `https://api.github.com/repos/${credentials.repo}/contents/assets/images/${file.name}`;
+                    
+                    // Check if file exists
+                    let sha = null;
+                    try {
+                        const checkResponse = await fetch(url, {
+                            headers: {
+                                'Authorization': `token ${credentials.token}`,
+                                'Accept': 'application/vnd.github.v3+json'
+                            }
+                        });
+                        if (checkResponse.ok) {
+                            const existing = await checkResponse.json();
+                            sha = existing.sha;
+                        }
+                    } catch (e) {}
+
+                    // Upload/update file
+                    const uploadData = {
+                        message: `Upload image: ${file.name}`,
+                        content: content
+                    };
+                    
+                    if (sha) {
+                        uploadData.sha = sha;
+                    }
+
+                    const response = await fetch(url, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${credentials.token}`,
+                            'Accept': 'application/vnd.github.v3+json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(uploadData)
+                    });
+
+                    if (!response.ok) throw new Error('Upload failed');
+
+                    showStatus('uploadStatus', `✓ ${file.name} uploaded successfully`, 'success');
+                };
+                reader.readAsDataURL(file);
+            } catch (error) {
+                showStatus('uploadStatus', `✗ Error uploading ${file.name}: ${error.message}`, 'error');
+                console.error(error);
+            }
+        }
+
+        async function loadImageList() {
+            try {
+                const url = `https://api.github.com/repos/${credentials.repo}/contents/assets/images`;
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${credentials.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) throw new Error('Failed to load images');
+
+                const files = await response.json();
+                const imageList = document.getElementById('imageList');
+                
+                if (!Array.isArray(files) || files.length === 0) {
+                    imageList.innerHTML = '<p style="color: #999; text-align: center;">No images found</p>';
                     return;
                 }
-                const jsonStr = JSON.stringify(data, null, 2);
-                const blob = new Blob([jsonStr], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `${currentVersion}.json`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                showStatus('status', 'JSON downloaded successfully.', 'success');
+
+                const imageFiles = files.filter(file => 
+                    file.type === 'file' && 
+                    /\.(jpg|jpeg|png|gif|svg|webp)$/i.test(file.name)
+                );
+
+                imageList.innerHTML = imageFiles.map(file => `
+                    <div class="image-item">
+                        <span class="image-name">${file.name}</span>
+                        <button class="copy-btn" onclick="copyImagePath('${file.name}')">📋 Copy Path</button>
+                    </div>
+                `).join('');
+
             } catch (error) {
-                showStatus('status', 'Error downloading JSON: ' + error.message, 'error');
+                document.getElementById('imageList').innerHTML = 
+                    '<p style="color: #dc3545; text-align: center;">Error loading images</p>';
+                console.error(error);
             }
+        }
+
+        function copyImagePath(filename) {
+            const path = `assets/images/${filename}`;
+            navigator.clipboard.writeText(path).then(() => {
+                showStatus('uploadStatus', `✓ Copied: ${path}`, 'success');
+            });
         }
     </script>
 </body>

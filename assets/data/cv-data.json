@@ -175,6 +175,7 @@
       "description": "Architected and developed a scalable e-commerce platform using microservices architecture with Spring Boot and Node.js. Implemented API Gateway, service discovery with Eureka, distributed tracing with Zipkin, and event-driven communication using RabbitMQ. Deployed on AWS ECS with auto-scaling capabilities handling 100k+ daily transactions.",
       "image": "project1.png",
       "filterCategory": "backend",
+      "active": true,
       "links": [
         {
           "url": "https://github.com/alejandromwork/ecommerce-platform",
@@ -188,6 +189,7 @@
       "description": "Built high-performance REST API using FastAPI and PostgreSQL for real-time analytics dashboard. Implemented Redis caching layer reducing query times by 80%, designed efficient database schemas with complex aggregations, and integrated WebSocket connections for live data streaming. Handles 10M+ events per day with sub-100ms response times.",
       "image": "project2.png",
       "filterCategory": "backend",
+      "active": true,
       "links": [
         {
           "url": "https://github.com/alejandromwork/analytics-api",
@@ -201,6 +203,7 @@
       "description": "Designed and deployed multi-tenant SaaS infrastructure on Kubernetes with tenant isolation, automated CI/CD pipelines using GitLab CI, and comprehensive monitoring with Prometheus/Grafana. Implemented JWT-based authentication, rate limiting, and audit logging. Reduced deployment time by 70% and achieved 99.9% uptime.",
       "image": "project3.png",
       "filterCategory": "devops",
+      "active": true,
       "links": [
         {
           "url": "https://github.com/alejandromwork/saas-infrastructure",
@@ -214,6 +217,7 @@
       "description": "Developed secure payment gateway integrating multiple payment providers (Stripe, PayPal, Bank transfers). Implemented idempotency keys, webhook handling, retry mechanisms with exponential backoff, and PCI-DSS compliant data handling. Built comprehensive reconciliation system processing $5M+ monthly transactions with 99.99% accuracy.",
       "image": "project4.png",
       "filterCategory": "backend",
+      "active": false,
       "links": [
         {
           "url": "https://github.com/alejandromwork/payment-gateway",
@@ -227,6 +231,7 @@
       "description": "Created distributed task scheduling system using Go and etcd for coordination. Implemented leader election, task sharding across workers, failure recovery, and priority queues. System processes 500k+ scheduled jobs daily with automatic failover and horizontal scaling capabilities. Reduced infrastructure costs by 40% through efficient resource utilization.",
       "image": "project5.png",
       "filterCategory": "backend",
+      "active": true,
       "links": [
         {
           "url": "https://github.com/alejandromwork/task-scheduler",
@@ -240,6 +245,7 @@
       "description": "Built centralized rate limiting service using Redis and Lua scripts supporting multiple algorithms (token bucket, sliding window, fixed window). Integrated with Kong API Gateway serving 1B+ API requests monthly. Implemented dynamic rate limit adjustments based on customer tiers and real-time monitoring dashboard for API usage analytics.",
       "image": "project6.png",
       "filterCategory": "backend",
+      "active": true,
       "links": [
         {
           "url": "https://github.com/alejandromwork/rate-limiter",

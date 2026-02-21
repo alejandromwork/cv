@@ -1,16 +1,13 @@
 /**
  * CV Version Controller
- * Manages multiple CV versions with dynamic content loading from Firebase
+ * Manages CV content loading from local JSON
  */
 
 class CVVersionController {
   constructor() {
     this.preloader = document.getElementById('preloader-overlay');
-    // Detect version from URL path or default
-    this.currentVersion = this.detectVersionFromPath() || 'data_science';
-    this.versions = null;
+    this.currentVersion = this.detectVersionFromPath() || 'developer';
     this.cvData = null;
-    this.firebaseInitialized = false;
     this.allExperiences = null;
     this.allProjects = null;
     this.init();
@@ -62,27 +59,20 @@ class CVVersionController {
   }
 
   async init() {
-    this.showPreloader();
-    // Initialize Firebase first
-    await this.initializeFirebase();
-
-    // Apply URL version before loading data
+    // Don't show preloader if in iframe (admin preview)
+    if (window.self === window.top) {
+      this.showPreloader();
+    }
     this.loadVersionFromURL();
-
-    // Load CV data from Firebase or local
     await this.loadVersions();
-
-    // Get DOM elements after data is loaded
     this.allExperiences = this.getAllExperiences();
     this.allProjects = this.getAllProjects();
-
     this.setupEventListeners();
-    // Do NOT call applyVersion here; it will be called after data is loaded in loadFromLocal/loadFromFirebase
     this.hidePreloader();
   }
 
   showPreloader() {
-    if (this.preloader) {
+    if (this.preloader && window.self === window.top) {
       this.preloader.classList.remove('hidden');
     }
   }
@@ -93,39 +83,7 @@ class CVVersionController {
     }
   }
 
-  async initializeFirebase() {
-    try {
-      if (typeof firebase === 'undefined') {
-        console.warn('Firebase SDK not loaded, will use local fallback');
-        return false;
-      }
-
-      // Firebase config
-      const firebaseConfig = {
-        apiKey: "AIzaSyBHw7K6HMLa2W_PmN9Yctq4XO3Zsng5PXI",
-        authDomain: "jobsearch-a3a6c.firebaseapp.com",
-        projectId: "jobsearch-a3a6c",
-        storageBucket: "jobsearch-a3a6c.appspot.com",
-        messagingSenderId: "123456789",
-        appId: "1:123456789:web:abcdef123456"
-      };
-
-      if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-      }
-      
-      this.db = firebase.firestore();
-      this.firebaseInitialized = true;
-      console.log('Firebase initialized successfully for CV loading');
-      return true;
-    } catch (error) {
-      console.error('Firebase initialization failed:', error);
-      return false;
-    }
-  }
-
   async loadVersions() {
-    // Try loading from local JSON first
     try {
       const response = await fetch('../assets/data/cv-data.json');
       if (response.ok) {
@@ -134,58 +92,11 @@ class CVVersionController {
         console.log('Loaded CV data from local JSON');
         this.populatePageWithData(localData);
         this.applyVersion(this.currentVersion);
-        return;
-      }
-    } catch (error) {
-      console.log('Local JSON not found, trying Firebase...', error);
-    }
-
-    // Fallback to Firebase
-    // Only load from Firebase - no local fallback
-    if (this.firebaseInitialized) {
-      const loaded = await this.loadFromFirebase();
-      if (!loaded) {
-        console.error('Failed to load CV data from Firebase for version:', this.currentVersion);
-      }
-    } else {
-      console.error('Firebase not initialized - cannot load CV data');
-    }
-  }
-
-  async loadFromFirebase() {
-    try {
-      console.log('Loading CV data from Firebase...');
-      const firebaseVersion = this.normalizeVersionKey(this.currentVersion);
-      const docRef = this.db.collection('cv-data').doc(firebaseVersion);
-      const doc = await docRef.get();
-
-      if (doc.exists) {
-        const docData = doc.data();
-        console.log('Firebase data loaded:', docData);
-
-        // Parse cvData
-        let cvData;
-        if (docData.cvData) {
-          cvData = typeof docData.cvData === 'string'
-            ? JSON.parse(docData.cvData)
-            : docData.cvData;
-        } else {
-          cvData = docData;
-        }
-
-        this.cvData = cvData;
-        this.populatePageWithData(cvData);
-        console.log('CV populated from Firebase successfully');
-        // Now safe to call applyVersion
-        this.applyVersion(this.currentVersion);
-        return true;
       } else {
-        console.log('No Firebase data found for version:', firebaseVersion);
-        return false;
+        console.error('Failed to load CV data');
       }
     } catch (error) {
-      console.error('Failed to load from Firebase:', error);
-      return false;
+      console.error('Error loading CV data:', error);
     }
   }
 
@@ -393,23 +304,9 @@ class CVVersionController {
   }
 
   switchVersion(version) {
-    const displayVersion = version;
-    const normalizedVersion = this.normalizeVersionKey(version);
-    if (!this.versions) {
-      console.error('CVVersionController: versions data is not loaded. Cannot switch version.');
-      return;
-    }
-    if (!this.versions[normalizedVersion] && !this.versions[displayVersion]) {
-      console.error('Version not found:', version);
-      return;
-    }
-
-    this.currentVersion = normalizedVersion;
-    this.applyVersion(normalizedVersion);
-
-    // Update URL without reload
-    const url = new URL(window.location);
-    url.searchParams.set('version', displayVersion);
+    // Version switching disabled - single version CV
+    console.log('Version switching not available in single-version mode');
+  }
     window.history.pushState({}, '', url);
 
     // Update selector
@@ -427,45 +324,17 @@ class CVVersionController {
   }
 
   applyVersion(versionKey) {
-    if (!this.versions) {
-      console.error('CVVersionController: versions data is not loaded.');
-      return;
-    }
-    const version = this.versions[versionKey];
-    if (!version) {
-      console.error(`CVVersionController: version '${versionKey}' not found in versions data. Available keys:`, Object.keys(this.versions));
+    if (!this.cvData) {
+      console.error('CVVersionController: CV data is not loaded.');
       return;
     }
 
     // Update document title
-    document.title = `Alejandro Moral Aranda - ${version.title}`;
+    const title = this.cvData.personalInfo?.name || 'Alejandro Moral Aranda';
+    document.title = `${title} - CV`;
 
-    // Update job title
-    const jobTitle = document.querySelector('.job');
-    if (jobTitle) {
-      jobTitle.textContent = version.jobTitle;
-    }
-
-    // Update about section
-    const aboutText = document.querySelector('.about p');
-    if (aboutText) {
-      aboutText.textContent = version.about;
-    }
-
-    // Reorder and filter experiences
-    this.updateExperiences(version.experienceOrder);
-
-    // Filter projects
-    this.updateProjects(version.projectsToShow);
-
-    // Apply formalism theme
-    this.applyFormalismTheme(version.formalism);
-
-    // Highlight relevant skills
-    this.highlightSkills(version.highlightedSkills);
-
-    // Update PDF download link
-    this.updatePDFLink(versionKey);
+    // Data is already populated, just update title
+    console.log('Version applied:', versionKey);
   }
 
   getAllExperiences() {
@@ -595,17 +464,17 @@ class CVVersionController {
   getCurrentVersion() {
     return {
       key: this.currentVersion,
-      data: this.versions[this.currentVersion]
+      data: this.cvData
     };
   }
 
   // Get all available versions
   getAvailableVersions() {
-    return Object.keys(this.versions).map(key => ({
-      key,
-      title: this.versions[key].title,
-      formalism: this.versions[key].formalism
-    }));
+    return [{
+      key: this.currentVersion,
+      title: 'Developer CV',
+      formalism: 'professional'
+    }];
   }
 }
 
