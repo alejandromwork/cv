@@ -125,6 +125,22 @@ class CVVersionController {
   }
 
   async loadVersions() {
+    // Try loading from local JSON first
+    try {
+      const response = await fetch('../assets/data/cv-data.json');
+      if (response.ok) {
+        const localData = await response.json();
+        this.cvData = localData;
+        console.log('Loaded CV data from local JSON');
+        this.populatePageWithData(localData);
+        this.applyVersion(this.currentVersion);
+        return;
+      }
+    } catch (error) {
+      console.log('Local JSON not found, trying Firebase...', error);
+    }
+
+    // Fallback to Firebase
     // Only load from Firebase - no local fallback
     if (this.firebaseInitialized) {
       const loaded = await this.loadFromFirebase();

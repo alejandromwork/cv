@@ -1,0 +1,171 @@
+{
+  "education": [
+    {
+      "school": "University of Málaga",
+      "location": "Málaga, Spain",
+      "degree": "Bachelor in Computer Science",
+      "dates": "Sept 2015 - Sept 2019",
+      "duration": "4 Year",
+      "description": "Projects: Full-Stack Web Application, REST API Development, Database Design",
+      "coursework": [
+        "Relevant coursework: Data Structures & Algorithms, Operating Systems, Databases, Computer Networks, Software Engineering, Artificial Intelligence, Machine Learning, Computer Architecture, Discrete Mathematics, and Probability & Statistics."
+      ]
+    },
+    {
+      "school": "University of Luxembourg",
+      "location": "Luxembourg",
+      "degree": "Master in Computer Science",
+      "dates": "Sept 2019 - Sept 2020",
+      "duration": "1 Year",
+      "description": "",
+      "coursework": [
+        "Relevant coursework: Advanced Algorithms, Distributed Systems, Advanced Machine Learning, Deep Learning, Big Data Analytics, Cloud Computing, Advanced Database Systems, Cybersecurity, Parallel Computing, Research Methods",
+        "Thesis: Research and Development of a Scalable AI, Data-Intensive, or Distributed Computing System."
+      ]
+    }
+  ],
+  "workExperience": [
+    {
+      "company": "Freelancer",
+      "title": "Senior Software Engineer",
+      "location": "Paris, France",
+      "dates": "March 2025 - Present",
+      "description": "Delivered end-to-end software solutions for diverse clients, designing scalable back-end architectures, RESTful APIs, and data-driven applications while leveraging cloud platforms (AWS/Azure/GCP) and containerization (Docker/Kubernetes).\n\nLed full project lifecycles from requirements gathering to deployment, developed web and automation solutions (Python, Node.js, JavaScript), optimized databases (SQL/NoSQL), implemented CI/CD pipelines, ensured security best practices, and provided technical consulting across system design, performance optimization, and digital transformation initiatives."
+    },
+    {
+      "company": "Accenture Spain",
+      "title": "Senior Software Engineer",
+      "location": "Seville, Spain",
+      "dates": "February 2021 - February 2025",
+      "duration": "4 Year 5 Months",
+      "description": "Designed and developed scalable enterprise applications, implemented RESTful APIs and microservices architectures, collaborated in Agile/Scrum teams, optimized database performance, integrated cloud services (AWS/Azure), ensured code quality through unit and integration testing, and contributed to CI/CD pipelines for automated deployment.\n\nGathered and analyzed business requirements with stakeholders, translated functional specifications into technical solutions, performed code reviews and refactoring to improve maintainability, monitored application performance in production environments, resolved critical incidents, and mentored junior developers while ensuring compliance with security and industry best practices."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Java",
+      "tags": ["Backend", "Enterprise"],
+      "years": 6,
+      "percent": 90
+    },
+    {
+      "name": "Python",
+      "tags": ["Backend", "Data"],
+      "years": 5,
+      "percent": 85
+    },
+    {
+      "name": "Node.js",
+      "tags": ["Backend", "JavaScript"],
+      "years": 5,
+      "percent": 85
+    },
+    {
+      "name": "RESTful APIs",
+      "tags": ["Architecture", "Integration"],
+      "years": 6,
+      "percent": 95
+    },
+    {
+      "name": "Microservices",
+      "tags": ["Architecture", "Design"],
+      "years": 4,
+      "percent": 85
+    },
+    {
+      "name": "SQL",
+      "tags": ["Database", "Query"],
+      "years": 6,
+      "percent": 90
+    },
+    {
+      "name": "NoSQL",
+      "tags": ["Database", "MongoDB"],
+      "years": 4,
+      "percent": 80
+    },
+    {
+      "name": "AWS",
+      "tags": ["Cloud", "Infrastructure"],
+      "years": 5,
+      "percent": 85
+    },
+    {
+      "name": "Docker",
+      "tags": ["DevOps", "Containers"],
+      "years": 4,
+      "percent": 85
+    },
+    {
+      "name": "Kubernetes",
+      "tags": ["DevOps", "Orchestration"],
+      "years": 3,
+      "percent": 75
+    },
+    {
+      "name": "Git",
+      "tags": ["Version Control"],
+      "years": 6,
+      "percent": 90
+    },
+    {
+      "name": "CI/CD",
+      "tags": ["DevOps", "Automation"],
+      "years": 5,
+      "percent": 85
+    }
+  ],
+  "languages": [
+    {
+      "name": "Spanish (Native)",
+      "flag": "spain.png"
+    },
+    {
+      "name": "English (Fluent)",
+      "flag": "uk.png"
+    },
+    {
+      "name": "French (Intermediate)",
+      "flag": "france.png"
+    },
+    {
+      "name": "Chinese (Basic)",
+      "flag": "china.png"
+    }
+  ],
+  "personal": {
+    "name": "Alejandro Moral Aranda",
+    "jobTitle": "Senior Software Engineer",
+    "photo": "yo.png",
+    "about": "Senior Software Engineer with expertise in back-end development, microservices architecture, and cloud computing."
+  },
+  "contact": {
+    "phone": "+34 675 949 628",
+    "email": "alejandro.moral.work@gmail.com",
+    "location": "Madrid, Spain",
+    "website": "https://alejandromoralwork.github.io/cv/developer/",
+    "github": "https://www.github.com/alejandromoralwork"
+  },
+  "interests": [
+    {
+      "name": "Chess",
+      "icon": "fas fa-chess"
+    },
+    {
+      "name": "Maths",
+      "icon": "fas fa-calculator"
+    },
+    {
+      "name": "Anime",
+      "icon": "fas fa-film"
+    },
+    {
+      "name": "Coding",
+      "icon": "fas fa-code"
+    },
+    {
+      "name": "Football",
+      "icon": "fas fa-futbol"
+    }
+  ]
+}
