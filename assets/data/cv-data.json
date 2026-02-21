@@ -143,8 +143,8 @@
     "phone": "+34 675 949 628",
     "email": "alejandro.moral.work@gmail.com",
     "location": "Madrid, Spain",
-    "website": "https://alejandromoralwork.github.io/cv/developer/",
-    "github": "https://www.github.com/alejandromoralwork"
+    "website": "https://alejandromwork.github.io/cv/developer/",
+    "github": "https://www.github.com/alejandromwork"
   },
   "interests": [
     {
@@ -166,6 +166,86 @@
     {
       "name": "Football",
       "icon": "fas fa-futbol"
+    }
+  ],
+  "projects": [
+    {
+      "title": "E-Commerce Microservices Platform",
+      "category": "Backend / Microservices / AWS",
+      "description": "Architected and developed a scalable e-commerce platform using microservices architecture with Spring Boot and Node.js. Implemented API Gateway, service discovery with Eureka, distributed tracing with Zipkin, and event-driven communication using RabbitMQ. Deployed on AWS ECS with auto-scaling capabilities handling 100k+ daily transactions.",
+      "image": "project1.png",
+      "filterCategory": "backend",
+      "links": [
+        {
+          "url": "https://github.com/alejandromwork/ecommerce-platform",
+          "text": "View Project"
+        }
+      ]
+    },
+    {
+      "title": "Real-Time Analytics Dashboard API",
+      "category": "Backend / Data Processing / Python",
+      "description": "Built high-performance REST API using FastAPI and PostgreSQL for real-time analytics dashboard. Implemented Redis caching layer reducing query times by 80%, designed efficient database schemas with complex aggregations, and integrated WebSocket connections for live data streaming. Handles 10M+ events per day with sub-100ms response times.",
+      "image": "project2.png",
+      "filterCategory": "backend",
+      "links": [
+        {
+          "url": "https://github.com/alejandromwork/analytics-api",
+          "text": "View Project"
+        }
+      ]
+    },
+    {
+      "title": "Multi-Tenant SaaS Backend Infrastructure",
+      "category": "Backend / Cloud / Kubernetes",
+      "description": "Designed and deployed multi-tenant SaaS infrastructure on Kubernetes with tenant isolation, automated CI/CD pipelines using GitLab CI, and comprehensive monitoring with Prometheus/Grafana. Implemented JWT-based authentication, rate limiting, and audit logging. Reduced deployment time by 70% and achieved 99.9% uptime.",
+      "image": "project3.png",
+      "filterCategory": "devops",
+      "links": [
+        {
+          "url": "https://github.com/alejandromwork/saas-infrastructure",
+          "text": "View Project"
+        }
+      ]
+    },
+    {
+      "title": "Payment Processing Gateway",
+      "category": "Backend / Integration / Security",
+      "description": "Developed secure payment gateway integrating multiple payment providers (Stripe, PayPal, Bank transfers). Implemented idempotency keys, webhook handling, retry mechanisms with exponential backoff, and PCI-DSS compliant data handling. Built comprehensive reconciliation system processing $5M+ monthly transactions with 99.99% accuracy.",
+      "image": "project4.png",
+      "filterCategory": "backend",
+      "links": [
+        {
+          "url": "https://github.com/alejandromwork/payment-gateway",
+          "text": "View Project"
+        }
+      ]
+    },
+    {
+      "title": "Distributed Task Scheduler",
+      "category": "Backend / Distributed Systems / Go",
+      "description": "Created distributed task scheduling system using Go and etcd for coordination. Implemented leader election, task sharding across workers, failure recovery, and priority queues. System processes 500k+ scheduled jobs daily with automatic failover and horizontal scaling capabilities. Reduced infrastructure costs by 40% through efficient resource utilization.",
+      "image": "project5.png",
+      "filterCategory": "backend",
+      "links": [
+        {
+          "url": "https://github.com/alejandromwork/task-scheduler",
+          "text": "View Project"
+        }
+      ]
+    },
+    {
+      "title": "API Rate Limiting & Throttling Service",
+      "category": "Backend / Performance / Redis",
+      "description": "Built centralized rate limiting service using Redis and Lua scripts supporting multiple algorithms (token bucket, sliding window, fixed window). Integrated with Kong API Gateway serving 1B+ API requests monthly. Implemented dynamic rate limit adjustments based on customer tiers and real-time monitoring dashboard for API usage analytics.",
+      "image": "project6.png",
+      "filterCategory": "backend",
+      "links": [
+        {
+          "url": "https://github.com/alejandromwork/rate-limiter",
+          "text": "View Project"
+        }
+      ]
     }
   ]
 }
