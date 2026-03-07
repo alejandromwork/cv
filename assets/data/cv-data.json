@@ -179,9 +179,9 @@
   "projects": [
     {
       "title": "Mendix.IfElse",
-      "category": "Backend / Microservices / AWS",
+      "category": "Front-end / Low-Code / UI Components",
       "description": "Tiny widget that enhances Conditional Visibility feature adding the else/otherwise case",
-      "image": "project1.png",
+      "image": "project1.PNG",
       "filterCategory": "backend",
       "active": true,
       "links": [
