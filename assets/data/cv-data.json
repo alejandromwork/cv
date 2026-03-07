@@ -1,8 +1,8 @@
 {
   "education": [
     {
-      "school": "University of Málaga",
-      "location": "Málaga, Spain",
+      "school": "University of Malaga",
+      "location": "Malaga, Spain",
       "degree": "Bachelor in Computer Science",
       "dates": "Sept 2015 - Sept 2019",
       "duration": "4 Year",
@@ -29,16 +29,24 @@
       "company": "Freelancer",
       "title": "Senior Software Engineer",
       "location": "Paris, France",
-      "dates": "March 2025 - Present",
+      "dates": "September 2025 - Present",
       "description": "Delivered end-to-end software solutions for diverse clients, designing scalable back-end architectures, RESTful APIs, and data-driven applications while leveraging cloud platforms (AWS/Azure/GCP) and containerization (Docker/Kubernetes).\n\nLed full project lifecycles from requirements gathering to deployment, developed web and automation solutions (Python, Node.js, JavaScript), optimized databases (SQL/NoSQL), implemented CI/CD pipelines, ensured security best practices, and provided technical consulting across system design, performance optimization, and digital transformation initiatives."
+    },
+    {
+      "company": "ARHS Group",
+      "title": "Senior Software Engineer",
+      "location": "Luxembourg",
+      "dates": "May 2024 - August 2025",
+      "duration": "3 Year 2 Months",
+      "description": " Developed and deployed AI-driven features and web applications, integrating machine learning models into production systems to support business workflows.\n Designed and maintained scalable web architectures and data pipelines, ensuring high performance and reliability across distributed environments.\n Worked with Python, JavaScript/TypeScript, React.js, Node.js, TensorFlow, PyTorch, and cloud technologies (AWS, Docker, Kubernetes) to deliver end-to-end solutions.\n Collaborated with cross-functional teams to implement full-stack solutions, optimize system performance, and deploy AI-enabled services efficiently."
     },
     {
       "company": "Accenture Spain",
       "title": "Senior Software Engineer",
       "location": "Seville, Spain",
-      "dates": "February 2021 - February 2025",
-      "duration": "4 Year 5 Months",
-      "description": "Designed and developed scalable enterprise applications, implemented RESTful APIs and microservices architectures, collaborated in Agile/Scrum teams, optimized database performance, integrated cloud services (AWS/Azure), ensured code quality through unit and integration testing, and contributed to CI/CD pipelines for automated deployment.\n\nGathered and analyzed business requirements with stakeholders, translated functional specifications into technical solutions, performed code reviews and refactoring to improve maintainability, monitored application performance in production environments, resolved critical incidents, and mentored junior developers while ensuring compliance with security and industry best practices."
+      "dates": "February 2021 - March 2024",
+      "duration": "3 Year 2 Months",
+      "description": "Developed and deployed machine learning and deep learning models, integrating them into production systems for enterprise AI solutions.\n Built and optimized scalable, data-intensive pipelines and distributed AI systems using Python, TensorFlow, PyTorch, and cloud technologies (AWS, Docker, Kubernetes).\n Collaborated with cross-functional teams to deliver end-to-end AI solutions, ensuring performance, reliability, and maintainability."
     }
   ],
   "skills": [
