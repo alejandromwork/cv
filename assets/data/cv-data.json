@@ -178,15 +178,15 @@
   ],
   "projects": [
     {
-      "title": "E-Commerce Microservices Platform",
+      "title": "Mendix.IfElse",
       "category": "Backend / Microservices / AWS",
-      "description": "Architected and developed a scalable e-commerce platform using microservices architecture with Spring Boot and Node.js. Implemented API Gateway, service discovery with Eureka, distributed tracing with Zipkin, and event-driven communication using RabbitMQ. Deployed on AWS ECS with auto-scaling capabilities handling 100k+ daily transactions.",
+      "description": "Tiny widget that enhances Conditional Visibility feature adding the else/otherwise case",
       "image": "project1.png",
       "filterCategory": "backend",
       "active": true,
       "links": [
         {
-          "url": "https://github.com/alejandromwork/ecommerce-platform",
+          "url": "https://github.com/Accenture/Mendix.IfElse",
           "text": "View Project"
         }
       ]
